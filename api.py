@@ -17,7 +17,3 @@ def get_data():
     }
     print("Sending data:", sample_data)  # Check server logs for data output
     return jsonify(sample_data)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
