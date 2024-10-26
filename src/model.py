@@ -13,6 +13,16 @@ class HealthData:
         self.systolic_bp = data["systolic_bp"]
         self.diastolic_bp = data["diastolic_bp"]
         
+    def __str__(self):
+        return (f"HealthData(timestamp={self.timestamp}, "
+                f"steps={self.steps}, "
+                f"heart_rate={self.heart_rate}, "
+                f"hrv={self.hrv}, "
+                f"respiratory_rate={self.respiratory_rate}, "
+                f"spO2={self.spO2}, "
+                f"systolic_bp={self.systolic_bp}, "
+                f"diastolic_bp={self.diastolic_bp})")
+        
 class EvaluatedHealthData:
     def __init__(self, is_stressed, is_asleep, good_sleep, is_exercise, is_tired):
         self.timestamp=datetime.now().timestamp()

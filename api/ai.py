@@ -13,20 +13,20 @@ def ask_ai_for_advice(health_problem):
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-
+    print(health_problem)
     data = {
         "model": "gpt-3.5-turbo-0125",  
         "messages": [
             {
                 "role": "user",
-                "content": "Mam problemy. Doradz mi co powinienem zrobic. Moje problemy: {health_problem}"
+                "content": "Jestem w pracy. Przydalaby mi sie przerwa. co moge teraz zrobic zebym troche lepiej sie czul. Opaska wykryla u mnie: {health_problem}. krotka odpowiedz"
             }
         ]
     }
 
     # Make the API call
-    #response = requests.post(url, headers=headers, json=data)
-    return "chat response"
+    response = requests.post(url, headers=headers, json=data)
+   
     
     if response.status_code == 200:
         response_data = response.json()

@@ -1,15 +1,20 @@
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-
-# Create a canvas object with the specified page size
-pdf_file = "api/data/raport.pdf"
-c = canvas.Canvas(pdf_file, pagesize=letter)
-
-# Set title and add text
-c.setFont("Helvetica", 12)
-c.drawString(100, 750, "Raport dla HR")
+from reportlab.platypus import SimpleDocTemplate, Image, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
 
 
-# Save the PDF
-c.save()
-print(f"PDF created successfully: {pdf_file}")
+def gen_pdf(pdf_path, wykres1_path, wykres2_path):
+    
+    pdf = SimpleDocTemplate(pdf_path, pagesize=letter)
+
+    elements = []
+    styles = getSampleStyleSheet()
+
+    elements.append(Paragraph("Raport zdrowia zespolu", styles["Title"]))
+    elements.append(Paragraph("Sen", styles["Title"]))
+    elements.append(Image(wykres1_path, width=400, height=300))  
+    elements.append(Paragraph("Stress", styles["Title"]))
+    elements.append(Image(wykres2_path, width=400, height=300))  
+
+    pdf.build(elements)
+    print(f"PDF with plot created successfully: {pdf_path}")
