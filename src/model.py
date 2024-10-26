@@ -21,6 +21,16 @@ class EvaluatedHealthData:
         self.good_sleep=good_sleep
         self.is_exercise=is_exercise
         self.is_tired=is_tired
+    
+    def __str__(self):
+        return (
+            f"EvaluatedHealthData("
+            f"is_stressed={self.is_stressed}, "
+            f"is_asleep={self.is_asleep}, "
+            f"good_sleep={self.good_sleep}, "
+            f"is_exercise={self.is_exercise}, "
+            f"is_tired={self.is_tired})"
+        )
 
 class Model:
     def __init__(self):
